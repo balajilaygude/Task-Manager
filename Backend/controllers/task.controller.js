@@ -15,6 +15,7 @@ async function getAllTask(req, res) {
 async function createTask(req, res) {
   try {
     const { title, description } = req.body;
+    console.log(req.body )
     if (!title || !description) {
       return res.status(400).json({
         error: "Plase fill all Fields",

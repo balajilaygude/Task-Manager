@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import Complete from "../components/Complete";
 import Pending from "../components/Pending";
 import axios from "axios";
+import Task from "../components/Task";
 
 export default function Home() {
   const [tasks, setTasks] = useState([]);
+
+
   async function fetchTask() {
     try {
       const res = await fetch("http://localhost:3000/api/task");
@@ -26,11 +29,24 @@ export default function Home() {
     try {
       const updateMsg = await axios.put(
         `http://localhost:3000/api/task/${id}`,
-         { isComplete: true } ,
+        { isComplete: true },
       );
-      fetchTask()
+      fetchTask();
     } catch (error) {
-      console.log(error)
+      console.log(error);
+    }
+  }
+
+  async function AddTask(task, description) { 
+    try {
+      const addMsg = await axios.post("http://localhost:3000/api/task", {
+        title: task,
+        description: description,
+      });
+      console.log(addMsg);
+      fetchTask();
+    } catch (error) {
+      console.log(error);
     }
   }
   useEffect(() => {
@@ -38,19 +54,25 @@ export default function Home() {
   }, []);
   return (
     <div className="w-screen">
+      <Task AddTask={AddTask} />
       <div className="m-2 shadow-md shadow-gray-300 flex justify-evenly items-center ">
-        <div className="w-2/5 border border-red-500">
+        <div className="w-2/5 ">
           <h1 className="text-3xl font-semibold text-center m-2 p-5 text-shadow-md text-shadow-red-200">
             Pending Task
           </h1>
           {tasks.map(
             (task, index) =>
               !task.isComplete && (
-                <Pending data={task} key={task._id} deleteTask={deleteTask} completeTask={completeTask}/>
+                <Pending
+                  data={task}
+                  key={task._id}
+                  deleteTask={deleteTask}
+                  completeTask={completeTask}
+                />
               ),
           )}
         </div>
-        <div className="w-2/5 border border-green-500">
+        <div className="w-2/5 ">
           <h1 className="text-3xl font-semibold text-center m-2 p-5 text-shadow-md text-shadow-green-200">
             Complete Task
           </h1>

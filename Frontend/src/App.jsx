@@ -10,7 +10,7 @@ function App() {
     <>
     <div>
     <Navbar/>
-    <Task/>
+
     <Home/>
     </div>
 
