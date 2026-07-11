@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Complete from "../components/Complete";
 import Pending from "../components/Pending";
+import axios from 'axios'
 
 export default function Home() {
   const [tasks, setTasks] = useState([]);
@@ -13,6 +14,19 @@ export default function Home() {
       console.log(error);
     }
   }
+      async function deleteTask(id) {
+        try {
+            console.log(id)
+            const delMsg= await axios.delete(`http://localhost:3000/api/task/${id}`)
+            console.log(delMsg)
+            setTasks(prev => prev.filter(task => task._id !== id));
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    async function completeTask(id) {
+        
+    }
   useEffect(() => {
     fetchTask();
   }, []);
@@ -23,7 +37,7 @@ export default function Home() {
         <h1 className="text-3xl font-semibold text-center m-2 p-5 text-shadow-md text-shadow-red-200">Pending Task</h1>
           {tasks.map(
             (task, index) =>
-              !task.isComplete && <Pending data={task} index={index} />,
+              !task.isComplete && <Pending data={task} key={task._id} deleteTask={deleteTask}/>,
           )}
         </div>
         <div className="w-3/6">
@@ -31,7 +45,7 @@ export default function Home() {
           
           {tasks.map(
             (task, index) =>
-              task.isComplete && <Complete data={task} index={index} />,
+              task.isComplete && <Complete data={task} key={task._id} deleteTask={deleteTask}/>,
           )}
         </div>
       </div>
