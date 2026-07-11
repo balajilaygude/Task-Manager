@@ -1,4 +1,5 @@
 import Navbar from "./components/Navbar"
+import Task from "./components/Task"
 import Home from "./pages/Home"
 
   
@@ -9,6 +10,7 @@ function App() {
     <>
     <div>
     <Navbar/>
+    <Task/>
     <Home/>
     </div>
 

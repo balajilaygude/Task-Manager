@@ -33,7 +33,6 @@ async function createTask(req, res) {
 async function updateTask(req,res) {
   try {
     const { id } = req.params;
-    console.log(req.body ," ",req.params )
     const { title, description, isComplete } = req.body;
     const upTask = await taskModel.findByIdAndUpdate(
       id,
@@ -46,6 +45,7 @@ async function updateTask(req,res) {
       });
     }
     res.status(200).json({
+      upTask,
       message: "Task Update successfully",
     });
   } catch (error) {
