@@ -54,9 +54,9 @@ export default function Home() {
     fetchTask();
   }, []);
   return (
-    <div className="w-screen">
+    <div className="w-full">
       <Task AddTask={AddTask} />
-      <div className="m-2 shadow-md shadow-gray-300 flex justify-evenly items-center ">
+      <div className="m-2 shadow-md shadow-gray-300 flex justify-evenly items-start ">
         <div className="w-2/5 ">
           <h1 className="text-3xl font-semibold text-center m-2 p-5 text-shadow-md text-shadow-red-200">
             Pending Task
@@ -71,7 +71,7 @@ export default function Home() {
                 />
           )}
         </div>
-        <div className="w-2/5 ">
+        <div className="w-2/5 flex flex-col">
           <h1 className="text-3xl font-semibold text-center m-2 p-5 text-shadow-md text-shadow-green-200">
             Complete Task
           </h1>

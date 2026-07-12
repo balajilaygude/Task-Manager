@@ -13,9 +13,9 @@ export default function Task({ AddTask }) {
     setDescription("");
   }
   return (
-    <div className="w-screen">
+    <div className="w-full">
       <form
-        className="p-5 flex justify-evenly m-2 shadow-md shadow-gray-300"
+        className="p-5 flex sm:flex-row flex-col gap-2  m-2 shadow-md shadow-gray-300"
         onSubmit={handleSubmit}
       >
         <div className="flex flex-col gap-3">
@@ -24,18 +24,18 @@ export default function Task({ AddTask }) {
             required
             onChange={(e) => setTask(e.target.value)}
             placeholder="Task name"
-            className="outline-none border-2 border-gray-400 w-120 h-10 px-2 py-1 rounded-lg focus:border-black"
+            className="outline-none border-2 border-gray-400 sm:w-120 sm:h-10 px-2 py-1 rounded-lg focus:border-black"
           />
           <input
             type="text"
             required
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Description"
-            className="outline-none border-2 border-gray-400 w-120 h-10 px-2 py-1 rounded-lg focus:border-black"
+            className="outline-none border-2 border-gray-400 sm:w-120 sm:h-10 px-2 py-1 rounded-lg focus:border-black"
           />
         </div>
 
-        <button className="bg-black text-white w-40 h-12 rounded-2xl hover:bg-gray-800">
+        <button className="bg-black  text-white mx-auto w-40 h-12 rounded-2xl hover:bg-gray-800">
           Add Task
         </button>
       </form>
