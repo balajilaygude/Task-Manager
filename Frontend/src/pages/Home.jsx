@@ -6,7 +6,8 @@ import Task from "../components/Task";
 
 export default function Home() {
   const [tasks, setTasks] = useState([]);
-
+  const penTask=tasks.filter((task)=>!task.isComplete)
+  const comTask=tasks.filter((task)=>task.isComplete)
 
   async function fetchTask() {
     try {
@@ -36,7 +37,6 @@ export default function Home() {
       console.log(error);
     }
   }
-
   async function AddTask(task, description) { 
     try {
       const addMsg = await axios.post("http://localhost:3000/api/task", {
@@ -49,6 +49,7 @@ export default function Home() {
       console.log(error);
     }
   }
+
   useEffect(() => {
     fetchTask();
   }, []);
@@ -60,16 +61,14 @@ export default function Home() {
           <h1 className="text-3xl font-semibold text-center m-2 p-5 text-shadow-md text-shadow-red-200">
             Pending Task
           </h1>
-          {tasks.map(
-            (task, index) =>
-              !task.isComplete && (
+          {penTask.map(
+            (task) =>
                 <Pending
                   data={task}
                   key={task._id}
                   deleteTask={deleteTask}
                   completeTask={completeTask}
                 />
-              ),
           )}
         </div>
         <div className="w-2/5 ">
@@ -77,11 +76,9 @@ export default function Home() {
             Complete Task
           </h1>
 
-          {tasks.map(
+          {comTask.map(
             (task, index) =>
-              task.isComplete && (
                 <Complete data={task} key={task._id} deleteTask={deleteTask} />
-              ),
           )}
         </div>
       </div>
