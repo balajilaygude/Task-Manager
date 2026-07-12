@@ -5,13 +5,14 @@ import axios from "axios";
 import Task from "../components/Task";
 
 export default function Home() {
+  const api=import.meta.env.VITE_API_URL
   const [tasks, setTasks] = useState([]);
   const penTask=tasks.filter((task)=>!task.isComplete)
   const comTask=tasks.filter((task)=>task.isComplete)
 
   async function fetchTask() {
     try {
-      const res = await fetch("http://localhost:3000/api/task");
+      const res = await fetch(`${api}/task`);
       const result = await res.json();
       setTasks(result.tasks);
     } catch (error) {
@@ -20,7 +21,7 @@ export default function Home() {
   }
   async function deleteTask(id) {
     try {
-      const delMsg = await axios.delete(`http://localhost:3000/api/task/${id}`);
+      const delMsg = await axios.delete(`${api}/task/${id}`);
       setTasks((prev) => prev.filter((task) => task._id !== id));
     } catch (error) {
       console.log(error);
@@ -29,7 +30,7 @@ export default function Home() {
   async function completeTask(id) {
     try {
       const updateMsg = await axios.put(
-        `http://localhost:3000/api/task/${id}`,
+        `${api}/task/${id}`,
         { isComplete: true },
       );
       fetchTask();
@@ -39,7 +40,7 @@ export default function Home() {
   }
   async function AddTask(task, description) { 
     try {
-      const addMsg = await axios.post("http://localhost:3000/api/task", {
+      const addMsg = await axios.post(`${api}/task`, {
         title: task,
         description: description,
       });
