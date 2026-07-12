@@ -56,8 +56,8 @@ export default function Home() {
   return (
     <div className="w-full">
       <Task AddTask={AddTask} />
-      <div className="m-2 shadow-md shadow-gray-300 flex justify-evenly items-start ">
-        <div className="w-2/5 ">
+      <div className="m-2 shadow-md shadow-gray-300 flex sm:flex-row flex-col justify-evenly items-start ">
+        <div className="sm:w-2/5 w-full">
           <h1 className="text-3xl font-semibold text-center m-2 p-5 text-shadow-md text-shadow-red-200">
             Pending Task
           </h1>
@@ -71,7 +71,7 @@ export default function Home() {
                 />
           )}
         </div>
-        <div className="w-2/5 flex flex-col">
+        <div className="sm:w-2/5 w-full">
           <h1 className="text-3xl font-semibold text-center m-2 p-5 text-shadow-md text-shadow-green-200">
             Complete Task
           </h1>
