@@ -15,10 +15,10 @@ export default function Task({ AddTask }) {
   return (
     <div className="w-full">
       <form
-        className="p-5 flex sm:flex-row flex-col gap-2 sm:justify-center sm:items-center  m-2 shadow-md shadow-gray-300"
+        className="p-5 flex md:flex-row flex-col gap-2 sm:justify-center sm:items-center  m-2 shadow-md shadow-gray-300"
         onSubmit={handleSubmit}
       >
-        <div className="flex flex-col sm:justify-center sm:items-end sm:pl-20 gap-3">
+        <div className="flex flex-col sm:justify-center sm:items-end md:pl-20 gap-3">
           <input
             type="text"
             required
