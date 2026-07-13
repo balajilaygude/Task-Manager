@@ -22,6 +22,7 @@ export default function Task({ AddTask }) {
           <input
             type="text"
             required
+             value={task}
             onChange={(e) => setTask(e.target.value)}
             placeholder="Task name"
             className="outline-none border-2 border-gray-400 sm:w-120 sm:h-10 px-2 py-1 rounded-lg focus:border-black"
@@ -29,6 +30,7 @@ export default function Task({ AddTask }) {
           <input
             type="text"
             required
+             value={description}
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Description"
             className="outline-none border-2 border-gray-400 sm:w-120 sm:h-10 px-2 py-1 rounded-lg focus:border-black"

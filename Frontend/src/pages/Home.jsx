@@ -62,7 +62,7 @@ export default function Home() {
           <h1 className="text-3xl font-semibold text-center m-2 p-5 text-shadow-md text-shadow-red-200">
             Pending Task
           </h1>
-          {penTask.map(
+          {penTask.length>0?  penTask.map(
             (task) =>
                 <Pending
                   data={task}
@@ -70,17 +70,19 @@ export default function Home() {
                   deleteTask={deleteTask}
                   completeTask={completeTask}
                 />
-          )}
+          ):
+          <p className="text-center text-lg text-gray-400">No Pending Task Found Add Task</p>}
         </div>
         <div className="sm:w-2/5 w-full">
           <h1 className="text-3xl font-semibold text-center m-2 p-5 text-shadow-md text-shadow-green-200">
             Complete Task
           </h1>
 
-          {comTask.map(
+          {comTask.length >0 ? comTask.map(
             (task, index) =>
-                <Complete data={task} key={task._id} deleteTask={deleteTask} />
-          )}
+              <Complete data={task} key={task._id} deleteTask={deleteTask} />
+          ):
+          <p className="text-center text-lg text-gray-400">No Pending Task Found Add Task</p>}
         </div>
       </div>
     </div>
