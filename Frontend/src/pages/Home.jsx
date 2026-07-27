@@ -5,7 +5,8 @@ import axios from "axios";
 import Task from "../components/Task";
 
 export default function Home() {
-  const api=import.meta.env.VITE_API_URL
+  // const api=import.meta.env.VITE_API_URL
+  const api="http://localhost:3000/api"
   const [tasks, setTasks] = useState([]);
   const penTask=tasks.filter((task)=>!task.isComplete)
   const comTask=tasks.filter((task)=>task.isComplete)
@@ -14,7 +15,6 @@ export default function Home() {
     try {
       const res = await fetch(`${api}/task`);
       const result = await res.json();
-      setTasks(result.tasks);
     } catch (error) {
       console.log(error);
     }
@@ -59,7 +59,7 @@ export default function Home() {
       <Task AddTask={AddTask} />
       <div className="m-2 shadow-md shadow-gray-300 flex sm:flex-row flex-col justify-evenly items-start ">
         <div className="sm:w-2/5 w-full">
-          <h1 className="text-3xl font-semibold text-center m-2 p-5 text-shadow-md text-shadow-red-200">
+          <h1 className="text-3xl font-semibold text-center m-2 p-5 ">
             Pending Task
           </h1>
           {penTask.length>0?  penTask.map(
@@ -74,7 +74,7 @@ export default function Home() {
           <p className="text-center text-lg text-gray-400">No Pending Task Found Add Task</p>}
         </div>
         <div className="sm:w-2/5 w-full">
-          <h1 className="text-3xl font-semibold text-center m-2 p-5 text-shadow-md text-shadow-green-200">
+            <h1 className="text-3xl font-semibold text-center m-2 p-5 ">
             Complete Task
           </h1>
 

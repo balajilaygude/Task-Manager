@@ -6,7 +6,7 @@ export default function Pending({data,deleteTask,completeTask}) {
 
   return (
     <div className='w-full flex justify-center items-center'>
-        <div className='w-9/10 m-2 border bg-red-200/20 border-black flex justify-center items-center gap-5 px-3 py-4'>
+        <div className='w-9/10 m-2 border rounded-lg border-black flex justify-center items-center gap-5 px-3 py-4'>
          <div className='w-full flex justify-between items-center'>
                 <div>
                     <h1 className='text-2xl font-semibold'>{data.title}</h1>
