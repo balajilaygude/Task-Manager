@@ -15,6 +15,8 @@ export default function Home() {
     try {
       const res = await fetch(`${api}/task`);
       const result = await res.json();
+      console.log(result)
+      setTasks(result.tasks)
     } catch (error) {
       console.log(error);
     }
