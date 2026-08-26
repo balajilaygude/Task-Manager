@@ -75,6 +75,7 @@ export default function Home() {
         </div>
         <div className="sm:w-2/5 w-full">
             <h1 className="text-3xl font-semibold text-center m-2 p-5 ">
+            {/* <h1 className="text-3xl font-semibold text-center m-2 p-5 text-shadow-md text-shadow-green-200"> */}
             Complete Task
           </h1>
 
