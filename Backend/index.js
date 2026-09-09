@@ -11,6 +11,8 @@ const port=process.env.PORT || 3000
 
 
 app.use("/api",taskRouter)
+app.use(cors())
+app.use(express.json())
 
 app.get("/",(req,res)=>{
     res.send(`<h1>Task Manager</h1>`)
