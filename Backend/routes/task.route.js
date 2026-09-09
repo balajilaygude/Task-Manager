@@ -4,7 +4,7 @@ const { getAllTask, createTask, deletetask, updateTask } = require("../controlle
 const taskRouter=express.Router()
 
 taskRouter.get("/",getAllTask)
-taskRouter.post("/",createTask)
+taskRouter.post("/task",createTask)
 taskRouter.delete("/task/:id",deletetask)
 taskRouter.put("/task/:id",updateTask)
 
